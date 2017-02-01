@@ -1,7 +1,18 @@
 # This is Andre's original code, except that I have moved the "days" from dates (yymmdd) 
 # to POSIXct with hms arguments. 
-# 
-# This also works, once as.Date(start) rather than Date is added to dplyr step
+#
+##I have brought in the "problem dates" from my analysis. Note that they are YMD and not POSIXct
+## But "days" is not POSIXct (converted to YMD during dplyr step) 
+
+# This fails with: 
+# dates_in_intervals <- list_dates(intervals)
+# Error in intervals[i, "start"]:intervals[i, "stop"] : NA/NaN argument
+# and whenI try: 
+# test <-intervals[1:"start"]:intervals[1:"stop"]
+# Error in 1:"start" : NA/NaN argument
+# In addition: Warning message:
+#  In check_names_df(i, x) : NAs introduced by coercion
+#> 
 # 
 library(lubridate)
 library(magrittr)
@@ -47,16 +58,6 @@ list_dates <- function(intervals){
 dates_in_intervals <- list_dates(intervals)
 dates_in_intervals
 
-# This fails with: 
-# dates_in_intervals <- list_dates(intervals)
-# Error in intervals[i, "start"]:intervals[i, "stop"] : NA/NaN argument
-# and whenI try: 
-# test <-intervals[1:"start"]:intervals[1:"stop"]
-# Error in 1:"start" : NA/NaN argument
-# In addition: Warning message:
-#  In check_names_df(i, x) : NAs introduced by coercion
-#> 
-# 
 
 days <- days %>%
   dplyr::rowwise() %>%
