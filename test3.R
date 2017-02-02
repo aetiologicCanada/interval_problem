@@ -46,6 +46,7 @@ days
 rm(dates_in_intervals)
 # funtion that lists invidual dates in each interval
 list_dates <- function(intervals){
+  intervals <- as.data.frame(intervals)
   ls <- list()
   n_intervals <- nrow(intervals)
   for(i in 1:n_intervals){
