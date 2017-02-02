@@ -22,7 +22,7 @@ library(feather)
 # 
 # 
 library(dplyr)
-problems <-read_feather("/home/rob/problems.RfeatherData")%>%
+problems <-read_feather("./problems.RfeatherData")%>%
   select(date)%>%
   mutate(
     start=date,
